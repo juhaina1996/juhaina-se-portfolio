@@ -1,9 +1,10 @@
-import resume from '../assets/pdf/resume.pdf'
-
+import resume from "../assets/pdf/resume.pdf";
+import image from "../assets/png/IMG_3137_2.jpg";
 export const headerData = {
-    name: 'Jane Doe',
-    title: "Web Developer",
-    desciption:"There wasn't a bird in the sky, but that was not what caught her attention. It was the clouds. The deep green that isn't the color of clouds, but came with these. She knew what was coming and she hoped she was prepared. ",
-    image: 'https://raw.githubusercontent.com/PhantomScript/asset-container/main/developer-portfolio/landingImg.png',
-    resumePdf: resume
-}
+  name: "Juhaina MT",
+  title: "Software Developer",
+  desciption:
+    "She walked along the beach, the sand between her toes, and the sound of the waves serenading her every step. The salty breeze carried memories of summers long gone, and she couldn't help but smile as the sun dipped below the horizon.",
+  image: image,
+  resumePdf: resume,
+};
