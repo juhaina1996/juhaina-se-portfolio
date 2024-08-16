@@ -4,8 +4,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import axios from "axios";
 import isEmail from "validator/lib/isEmail";
 import { makeStyles } from "@material-ui/core/styles";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase";
+// import { addDoc, collection } from "firebase/firestore";
+// import { db } from "../../firebase";
 
 import {
   FaTwitter,
@@ -132,42 +132,42 @@ function Contacts() {
 
   const classes = useStyles();
 
-  const handleContactForm = async (e) => {
-    e.preventDefault();
+  // const handleContactForm = async (e) => {
+  //   e.preventDefault();
 
-    if (name && email && message) {
-      if (isEmail(email)) {
-        const responseData = {
-          name: name,
-          email: email,
-          message: message,
-        };
+  //   if (name && email && message) {
+  //     if (isEmail(email)) {
+  //       const responseData = {
+  //         name: name,
+  //         email: email,
+  //         message: message,
+  //       };
 
-        try {
-          // Add a new document with user details to Firestore
-          await addDoc(collection(db, "contactForms"), responseData);
-          console.log("success");
+  //       try {
+  //         // Add a new document with user details to Firestore
+  //         await addDoc(collection(db, "contactForms"), responseData);
+  //         console.log("success");
 
-          setSuccess(true);
-          setErrMsg("");
-          setName("");
-          setEmail("");
-          setMessage("");
-          setOpen(false);
-        } catch (error) {
-          console.error("Error adding document: ", error);
-          setErrMsg("Failed to submit. Please try again.");
-          setOpen(true);
-        }
-      } else {
-        setErrMsg("Invalid email");
-        setOpen(true);
-      }
-    } else {
-      setErrMsg("Enter all the fields");
-      setOpen(true);
-    }
-  };
+  //         setSuccess(true);
+  //         setErrMsg("");
+  //         setName("");
+  //         setEmail("");
+  //         setMessage("");
+  //         setOpen(false);
+  //       } catch (error) {
+  //         console.error("Error adding document: ", error);
+  //         setErrMsg("Failed to submit. Please try again.");
+  //         setOpen(true);
+  //       }
+  //     } else {
+  //       setErrMsg("Invalid email");
+  //       setOpen(true);
+  //     }
+  //   } else {
+  //     setErrMsg("Enter all the fields");
+  //     setOpen(true);
+  //   }
+  // };
 
   return (
     <div
@@ -179,71 +179,69 @@ function Contacts() {
         <h1 style={{ color: theme.primary }}>Contacts</h1>
         <div className="contacts-body">
           <div className="contacts-form">
-            <form onSubmit={handleContactForm}>
-              <div className="input-container">
-                <label htmlFor="Name" className={classes.label}>
-                  Name
-                </label>
-                <input
-                  placeholder="Juhaina"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  type="text"
-                  name="Name"
-                  className={`form-input ${classes.input}`}
-                />
-              </div>
-              <div className="input-container">
-                <label htmlFor="Email" className={classes.label}>
-                  Email
-                </label>
-                <input
-                  placeholder="Juhaina@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  name="Email"
-                  className={`form-input ${classes.input}`}
-                />
-              </div>
-              <div className="input-container">
-                <label htmlFor="Message" className={classes.label}>
-                  Message
-                </label>
-                <textarea
-                  placeholder="Type your message...."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  type="text"
-                  name="Message"
-                  className={`form-message ${classes.message}`}
-                />
-              </div>
+            {/* <form onSubmit={handleContactForm}> */}
+            <div className="input-container">
+              <label htmlFor="Name" className={classes.label}>
+                Name
+              </label>
+              <input
+                placeholder="Juhaina"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                name="Name"
+                className={`form-input ${classes.input}`}
+              />
+            </div>
+            <div className="input-container">
+              <label htmlFor="Email" className={classes.label}>
+                Email
+              </label>
+              <input
+                placeholder="Juhaina@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                name="Email"
+                className={`form-input ${classes.input}`}
+              />
+            </div>
+            <div className="input-container">
+              <label htmlFor="Message" className={classes.label}>
+                Message
+              </label>
+              <textarea
+                placeholder="Type your message...."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                type="text"
+                name="Message"
+                className={`form-message ${classes.message}`}
+              />
+            </div>
 
-              <div className="submit-btn">
-                <button type="submit" className={classes.submitBtn}>
-                  <p>{!success ? "Send" : "Sent"}</p>
-                  <div className="submit-icon">
-                    <AiOutlineSend
-                      className="send-icon"
-                      style={{
-                        animation: !success
-                          ? "initial"
-                          : "fly 0.8s linear both",
-                        position: success ? "absolute" : "initial",
-                      }}
-                    />
-                    <AiOutlineCheckCircle
-                      className="success-icon"
-                      style={{
-                        display: !success ? "none" : "inline-flex",
-                        opacity: !success ? "0" : "1",
-                      }}
-                    />
-                  </div>
-                </button>
-              </div>
-            </form>
+            <div className="submit-btn">
+              <button type="submit" className={classes.submitBtn}>
+                <p>{!success ? "Send" : "Sent"}</p>
+                <div className="submit-icon">
+                  <AiOutlineSend
+                    className="send-icon"
+                    style={{
+                      animation: !success ? "initial" : "fly 0.8s linear both",
+                      position: success ? "absolute" : "initial",
+                    }}
+                  />
+                  <AiOutlineCheckCircle
+                    className="success-icon"
+                    style={{
+                      display: !success ? "none" : "inline-flex",
+                      opacity: !success ? "0" : "1",
+                    }}
+                  />
+                </div>
+              </button>
+            </div>
+            {/* </form> */}
             <Snackbar
               anchorOrigin={{
                 vertical: "top",
