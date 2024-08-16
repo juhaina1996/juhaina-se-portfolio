@@ -75,7 +75,7 @@ import unity from "../assets/svg/skills/unity.svg";
 import wolframalpha from "../assets/svg/skills/wolframalpha.svg";
 
 import canva from "../assets/svg/skills/canva.svg";
-
+import nodejs from "../assets/png/nodejs.png";
 export const skillsImage = (skill) => {
   const skillID = skill.toLowerCase();
   switch (skillID) {
@@ -83,6 +83,8 @@ export const skillsImage = (skill) => {
       return gcp;
     case "html":
       return html;
+    case "Node JS":
+      return nodejs;
     case "photoshop":
       return photoshop;
     case "docker":

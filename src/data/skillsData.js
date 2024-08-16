@@ -11,6 +11,9 @@ export const skillsData = [
   "Github",
   "Tailwind",
   "Bootstrap",
+  // "Angular",
+  // "Node JS",
+  // "Express",
 ];
 
 // Choose your skills from below. Make sure it's in the same format and spelled correctly.

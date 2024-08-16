@@ -4,7 +4,7 @@ export const headerData = {
   name: "Juhaina MT",
   title: "Software Developer",
   desciption:
-    "She walked along the beach, the sand between her toes, and the sound of the waves serenading her every step. The salty breeze carried memories of summers long gone, and she couldn't help but smile as the sun dipped below the horizon.",
+    "As a passionate software developer with 2 years of experience, I specialize in building dynamic and user-friendly web applications. My expertise includes JavaScript, React, and Firebase, with a focus on creating efficient and scalable solutions. I am driven by continuous learning and enjoy tackling challenging problems to deliver high-quality software",
   image: image,
   resumePdf: resume,
 };

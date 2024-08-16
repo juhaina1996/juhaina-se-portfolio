@@ -4,6 +4,9 @@ import CloseIcon from "@material-ui/icons/Close";
 import axios from "axios";
 import isEmail from "validator/lib/isEmail";
 import { makeStyles } from "@material-ui/core/styles";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase";
+
 import {
   FaTwitter,
   FaLinkedinIn,
@@ -129,7 +132,7 @@ function Contacts() {
 
   const classes = useStyles();
 
-  const handleContactForm = (e) => {
+  const handleContactForm = async (e) => {
     e.preventDefault();
 
     if (name && email && message) {
@@ -140,16 +143,22 @@ function Contacts() {
           message: message,
         };
 
-        axios.post(contactsData.sheetAPI, responseData).then((res) => {
+        try {
+          // Add a new document with user details to Firestore
+          await addDoc(collection(db, "contactForms"), responseData);
           console.log("success");
+
           setSuccess(true);
           setErrMsg("");
-
           setName("");
           setEmail("");
           setMessage("");
           setOpen(false);
-        });
+        } catch (error) {
+          console.error("Error adding document: ", error);
+          setErrMsg("Failed to submit. Please try again.");
+          setOpen(true);
+        }
       } else {
         setErrMsg("Invalid email");
         setOpen(true);
